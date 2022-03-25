@@ -1,8 +1,9 @@
 import { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 class ErrorBoundary extends Component {
-  state = { hasError: false };
+  state = { hasError: false, redirect: false };
 
   static getDerivedStateFromError(error) {
     return { hasError: true };
@@ -11,13 +12,24 @@ class ErrorBoundary extends Component {
   componentDidCatch(error, errorInfo) {
     // Should log to Sentry, Azure Monitor, New Relic, TrackJS,...
     console.error("ErrorBoundary caught:\n", error, errorInfo);
+    setTimeout(() => this.setState({ redirect: true }), 3000);
   }
 
-  render() {
+  /* 
+  componentDidUpdate() {
     if (this.state.hasError) {
+    }
+  }
+  */
+
+  render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    } else if (this.state.hasError) {
       return (
         <h2>
-          Details page not found. <Link to="/">Return to home page</Link>
+          Details page not found. <Link to="/">Return to home page</Link> or
+          wait 3 seconds.
         </h2>
       );
     }
