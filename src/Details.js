@@ -41,7 +41,7 @@ class Details extends Component {
     }
 
     return (
-      <div className="details">
+      <div className="">
         <Carousel images={images} />
         <div>
           <h1>{name}</h1>
@@ -62,7 +62,7 @@ class Details extends Component {
             <Modal>
               <div>
                 <h1>Would you like to adopt {name}?</h1>
-                <div className="buttons">
+                <div className="">
                   <button onClick={this.adoptIt}>Yup</button>
                   <button onClick={this.toggleModal}>Nope</button>
                 </div>
