@@ -9,7 +9,7 @@ const App = () => {
   const themeHook = useState("peru");
   return (
     <ThemeContext.Provider value={themeHook}>
-      <div>
+      <div className="p-0 m-0 bg-[url('http://pets-images.dev-apis.com/pets/wallpaperC.jpg')]">
         <Router>
           <header>
             <Link to="/">
