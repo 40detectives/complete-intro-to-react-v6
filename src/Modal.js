@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-const modalRoot = document.querySelector("#modal");
+let modalRoot;
 
 const Modal = ({ children }) => {
+  modalRoot = modalRoot ? modalRoot : document.querySelector("#modal");
+
   const elRef = useRef(null);
   if (!elRef.current) {
     elRef.current = document.createElement("div");
