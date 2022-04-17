@@ -1,18 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, FunctionComponent, MutableRefObject } from "react";
 import { createPortal } from "react-dom";
 
 const modalRoot = document.querySelector("#modal");
 
-const Modal = ({ children }) => {
-  const elRef = useRef(null);
+const Modal: FunctionComponent = ({ children }) => {
+  const elRef: MutableRefObject<HTMLDivElement | null> = useRef(null); // Generic of null first time, then of HTMLDivElement
   if (!elRef.current) {
     elRef.current = document.createElement("div");
   }
 
   useEffect(() => {
+    if (!modalRoot || elRef.current) return;
+
     modalRoot.appendChild(elRef.current);
+
     // function returned is the one that will be used for cleaning up:
-    return () => modalRoot.removeChild(elRef.current);
+    return () => {
+      modalRoot.removeChild(elRef.current);
+    };
   }, []);
 
   return createPortal(<div>{children}</div>, elRef.current);
