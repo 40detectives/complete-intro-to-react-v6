@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet}"
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet}"
   },
   "keywords": [
     "react",
@@ -21,8 +21,11 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "@types/react-router-dom": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
