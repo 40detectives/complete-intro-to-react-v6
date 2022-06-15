@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 const modalRoot = document.querySelector("#modal");
 
 const Modal: FunctionComponent = ({ children }) => {
-  const elRef: MutableRefObject<HTMLDivElement | null> = useRef(null); // Generic of null first time, then of HTMLDivElement
+  const elRef: MutableRefObject<HTMLDivElement | null> = useRef(null) as null; // Generic of null first time, then of HTMLDivElement
   if (!elRef.current) {
     elRef.current = document.createElement("div");
   }
@@ -21,6 +21,6 @@ const Modal: FunctionComponent = ({ children }) => {
   }, []);
 
   return createPortal(<div>{children}</div>, elRef.current);
-};
+};;
 
 export default Modal;
